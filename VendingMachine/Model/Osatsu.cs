@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace VendingMachine.Model {
-    class Osatsu : Money {
+    public class Osatsu : MoneyBase {
+
+        public Osatsu(MoneyType type): base(type) { 
+        }
+
     }
 }
