@@ -36,7 +36,7 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <Button x:Name="btnCoinSlot" Click="btnSlotInsertCoin_Click" HorizontalAlignment="Left" Margin="191,155,0,421" Height="35" Width="100" Content="Coin Slot" />
-        <Button x:Name="btnOsatsuSlot" Click="btnSlotInsertOsatsu_Click" HorizontalAlignment="Left" Margin="191,195,0,381" Height="35" Width="100" Content="Osatsu Slot" />
+        <Button x:Name="btnOsatsuSlot" Click="btnSlotInsertOsatsu_Click"  HorizontalAlignment="Left" Margin="191,195,0,381" Height="35" Width="100" Content="Osatsu Slot" />
         <TextBox x:Name="ReturnMoneyOutputter" HorizontalAlignment="Left" Height="139" Margin="10,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
     </Grid>
 </Window>

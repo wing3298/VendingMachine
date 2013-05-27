@@ -41,7 +41,7 @@ namespace VendingMachine.Model {
         /// <summary>
         /// Moneyを追加しますよ。
         /// </summary>
-        /// <param name="money"></param>
+        /// <param name="money">お金</param>
         public void AddMoney(MoneyBase money) {
             // 定義されてないEnumの値だったら弾く。"(MoneyType)9999"とか出来ちゃうから。
             if (!Enum.IsDefined(typeof(MoneyType), money.MoneyType)) {
@@ -55,7 +55,7 @@ namespace VendingMachine.Model {
         /// <summary>
         /// AllMoneyListの中から、追加したいお金種別のListをゲーット
         /// </summary>
-        /// <param name="moneyType"></param>
+        /// <param name="moneyType">お金種別</param>
         /// <returns></returns>
         private List<MoneyBase> GetMoneyPool(MoneyType moneyType) {
             List<MoneyBase> list = null;
@@ -72,6 +72,8 @@ namespace VendingMachine.Model {
 
         /// <summary>
         /// とりあえずStringでお金の総数を返すよ。
+        /// 
+        /// 投入金も、払い戻ししたので0円にする。
         /// </summary>
         /// <returns></returns>
         public string OutputMoney() { 
@@ -86,8 +88,13 @@ namespace VendingMachine.Model {
                 }
             }
 
+
+            // お金を吐き出したら、中身は空にする。
+            _allMoneyList.Clear();
+
             return output;
         }
+
 
     }
 }

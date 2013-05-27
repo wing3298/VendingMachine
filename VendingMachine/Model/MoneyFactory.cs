@@ -5,13 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace VendingMachine.Model {
+
+    /// <summary>
+    /// お金を生成するFactoryです。
+    /// Singletonです。
+    /// </summary>
     public class MoneyFactory {
 
         protected static MoneyFactory _instance;
 
+        /// <summary>
+        /// singleton
+        /// </summary>
         private MoneyFactory() { 
         }
 
+        /// <summary>
+        /// singletonです。
+        /// </summary>
+        /// <returns></returns>
         public static MoneyFactory GetInstance() {
             if (_instance == null) {
                 _instance = new MoneyFactory();
@@ -19,6 +31,11 @@ namespace VendingMachine.Model {
             return _instance;
         }
 
+        /// <summary>
+        /// お金を生成します。
+        /// </summary>
+        /// <param name="moneyType">お金の種類</param>
+        /// <returns>お金の実体。Baseクラスで返しますが、中身はOsatsuかCoinクラスです。</returns>
         public MoneyBase CreateMoney(MoneyType moneyType) {
             MoneyBase money;
 

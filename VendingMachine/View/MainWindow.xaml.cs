@@ -26,6 +26,11 @@ namespace VendingMachine {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// お札投入口のクリックHandler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSlotInsertCoin_Click(object sender, RoutedEventArgs e) {
             if (Enum.IsDefined(typeof(MoneyType), _insertMoneyType)) {
                 MoneyFactory factory = MoneyFactory.GetInstance();
@@ -36,6 +41,11 @@ namespace VendingMachine {
             }
         }
 
+        /// <summary>
+        /// 硬貨投入口のクリックHandler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSlotInsertOsatsu_Click(object sender, RoutedEventArgs e) {
             if (Enum.IsDefined(typeof(MoneyType), _insertMoneyType)) {
                 MoneyFactory factory = MoneyFactory.GetInstance();
@@ -46,6 +56,13 @@ namespace VendingMachine {
             }
         }
 
+        /// <summary>
+        /// おつりレバーのクリックHandler.
+        /// 
+        /// クリックすると、投入したお金の分だけTextで出します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectRetunMoneyLever_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
             MoneyManager moneyManager = MoneyManager.GetInstance();
             string insertedMoney = moneyManager.OutputMoney();
