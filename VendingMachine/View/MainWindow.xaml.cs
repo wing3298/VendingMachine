@@ -22,6 +22,12 @@ namespace VendingMachine {
 
         private MoneyType _insertMoneyType;
 
+        /// <summary>
+        /// 手の上に持っているお金。
+        /// </summary>
+        private MoneyBase _moneyInHand;
+
+
         public MainWindow() {
             InitializeComponent();
         }
@@ -73,6 +79,10 @@ namespace VendingMachine {
 
         private void btnYen10000_Click(object sender, RoutedEventArgs e) {
             _insertMoneyType = MoneyType.yen10000;
+
+            // こうやって作った方がいいかな？責務がすごく微妙。
+            MoneyFactory factory = MoneyFactory.GetInstance();
+            _moneyInHand = factory.CreateMoney(MoneyType.yen10000);
         }
 
         private void btnYen5000_Click(object sender, RoutedEventArgs e) {
