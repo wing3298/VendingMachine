@@ -83,11 +83,22 @@ namespace VendingMachine.Model {
         }
 
         /// <summary>
-        /// 投入したお金が幾らか計算する
+        /// 投入したお金が幾らか計算する。
+        /// ドルとセントは計算でき・・・ますけどマイナスなのでえらいことになります。
         /// </summary>
         /// <returns></returns>
         public string CountMoney() {
-            return "Mada Not Implement.";
+            int sumValue = 0;
+
+            foreach (IList<MoneyBase> list in _allMoneyList.Values) {
+                if (list.Count > 0) {
+                    int value = (int)list[0].MoneyType;
+                    value = value * list.Count;
+                    sumValue += value;
+                }
+            }
+
+            return sumValue.ToString();
         } 
 
 

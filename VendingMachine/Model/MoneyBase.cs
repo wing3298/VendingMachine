@@ -13,18 +13,18 @@ namespace VendingMachine.Model {
     /// それぞれにクラス作ったほうが楽だけど、とりあえずお手軽だからこっちにしとく。
     /// </remarks>
     public enum MoneyType { 
-        yen10000 = 10,
-        yen5000 = 20,
-        yen2000 = 30,
-        yen1000 = 40,
-        yen500 = 50,
-        yen100 = 60,
-        yen50 = 70,
-        yen10 = 80,
-        yen5 = 90,
-        yen1 = 100,
-        doller100 = 110,
-        cent1 = 120,
+        yen10000 = 10000,
+        yen5000 = 5000,
+        yen2000 = 2000,
+        yen1000 = 1000,
+        yen500 = 500,
+        yen100 = 100,
+        yen50 = 50,
+        yen10 = 10,
+        yen5 = 5,
+        yen1 = 1,
+        doller100 = -100,
+        cent1 = -1,
     }
 
     /// <summary>

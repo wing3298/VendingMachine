@@ -76,8 +76,12 @@ namespace VendingMachine {
             MoneyManager moneyManager = MoneyManager.GetInstance();
             string insertedMoney = moneyManager.ReturnMoney();
 
+            // 仮。
             if (!string.IsNullOrEmpty(insertedMoney)) {
                 insertedMoney = "ちゃりんちゃりんちゃりん\n" + insertedMoney;
+            }
+            else {
+                insertedMoney = "カチャッ...";
             }
 
             ReturnMoneyOutputter.Text = insertedMoney;
