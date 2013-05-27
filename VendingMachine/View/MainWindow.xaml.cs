@@ -30,6 +30,8 @@ namespace VendingMachine {
 
         public MainWindow() {
             InitializeComponent();
+
+            // _moneyInHandのChangeHandler作りたいな～～
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="VendingMachine.MainWindow"
-        Title="MainWindow" Height="637.913" Width="441.389">
+        Title="MainWindow" Height="637.913" Width="556.389">
     <Grid HorizontalAlignment="Left" Height="611" VerticalAlignment="Top" Width="301" Margin="0,0,0,-3">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -38,5 +38,7 @@
         <Button x:Name="btnCoinSlot" Click="btnSlotInsertCoin_Click" HorizontalAlignment="Left" Margin="191,155,0,421" Height="35" Width="100" Content="Coin Slot" />
         <Button x:Name="btnOsatsuSlot" Click="btnSlotInsertOsatsu_Click"  HorizontalAlignment="Left" Margin="191,195,0,381" Height="35" Width="100" Content="Osatsu Slot" />
         <TextBox x:Name="ReturnMoneyOutputter" HorizontalAlignment="Left" Height="139" Margin="10,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <TextBlock x:Name="InsertedMoneyDisplay" HorizontalAlignment="Left" Margin="191,331,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Background="White"/>
+        <TextBlock x:Name="moneyInHandDisplay" HorizontalAlignment="Left" Margin="439,331,-235,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Height="62" Background="#FFCBECFF"/>
     </Grid>
 </Window>
