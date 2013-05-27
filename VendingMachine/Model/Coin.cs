@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace VendingMachine.Model {
 
@@ -11,7 +12,9 @@ namespace VendingMachine.Model {
     /// </summary>
     public class Coin : MoneyBase {
 
-        public Coin(MoneyType type): base(type) { 
+        public Coin(MoneyType type): base(type) {
+
+            //todo Reflectionを使って、MoneyFactory以外から呼び出されたときは、Exceptionにしようかな。
         }
     }
 }

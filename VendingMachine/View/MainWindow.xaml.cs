@@ -20,10 +20,9 @@ namespace VendingMachine {
     /// </summary>
     public partial class MainWindow : Window {
 
-        private MoneyType _insertMoneyType;
-
         /// <summary>
-        /// 手の上に持っているお金。
+        /// 手に持っているお金。
+        /// つまんでいるイメージなので、1個だけ。
         /// </summary>
         private MoneyBase _moneyInHand;
 
@@ -35,33 +34,35 @@ namespace VendingMachine {
         }
 
         /// <summary>
-        /// お札投入口のクリックHandler
+        /// お札投入口のクリックHandler.
+        /// 
+        /// 手に持っているお金を投入します。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSlotInsertCoin_Click(object sender, RoutedEventArgs e) {
-            if (Enum.IsDefined(typeof(MoneyType), _insertMoneyType)) {
-                MoneyFactory factory = MoneyFactory.GetInstance();
-                MoneyManager moneyManager = MoneyManager.GetInstance();
-
-                MoneyBase money = factory.CreateMoney(_insertMoneyType);
-                moneyManager.AddMoney(money);
+            MoneyManager moneyManager = MoneyManager.GetInstance();
+            if (_moneyInHand != null) {
+                moneyManager.AddMoney(_moneyInHand);
             }
+
+            InsertedMoneyDisplay.Text = moneyManager.CountMoney();
         }
 
         /// <summary>
-        /// 硬貨投入口のクリックHandler
+        /// 硬貨投入口のクリックHandler.
+        /// 
+        /// 手に持っているお金を投入します。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSlotInsertOsatsu_Click(object sender, RoutedEventArgs e) {
-            if (Enum.IsDefined(typeof(MoneyType), _insertMoneyType)) {
-                MoneyFactory factory = MoneyFactory.GetInstance();
-                MoneyManager moneyManager = MoneyManager.GetInstance();
-
-                MoneyBase money = factory.CreateMoney(_insertMoneyType);
-                moneyManager.AddMoney(money);
+            MoneyManager moneyManager = MoneyManager.GetInstance();
+            if (_moneyInHand != null) {
+                moneyManager.AddMoney(_moneyInHand);
             }
+
+            InsertedMoneyDisplay.Text = moneyManager.CountMoney();
         }
 
         /// <summary>
@@ -73,65 +74,74 @@ namespace VendingMachine {
         /// <param name="e"></param>
         private void RectRetunMoneyLever_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
             MoneyManager moneyManager = MoneyManager.GetInstance();
-            string insertedMoney = moneyManager.OutputMoney();
+            string insertedMoney = moneyManager.ReturnMoney();
+
+            if (!string.IsNullOrEmpty(insertedMoney)) {
+                insertedMoney = "ちゃりんちゃりんちゃりん\n" + insertedMoney;
+            }
 
             ReturnMoneyOutputter.Text = insertedMoney;
         }
 
 
         private void btnYen10000_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen10000;
-
-            // こうやって作った方がいいかな？責務がすごく微妙。
-            MoneyFactory factory = MoneyFactory.GetInstance();
-            _moneyInHand = factory.CreateMoney(MoneyType.yen10000);
+            CreateMoney(MoneyType.yen10000);
         }
 
         private void btnYen5000_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen5000;
+            CreateMoney(MoneyType.yen5000);
         }
 
         private void btnYen2000_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen2000;
+            CreateMoney(MoneyType.yen2000);
         }
 
         private void btnYen1000_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen1000;
+            CreateMoney(MoneyType.yen1000);
         }
 
         private void btnYen500_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen500;
+            CreateMoney(MoneyType.yen500);
         }
 
         private void btnYen100_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen100;
+            CreateMoney(MoneyType.yen100);
         }
 
         private void btnYen50_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen50;
+            CreateMoney(MoneyType.yen50);
         }
 
         private void btnYen10_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen10;
+            CreateMoney(MoneyType.yen10);
         }
 
         private void btnYen5_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen5;
+            CreateMoney(MoneyType.yen5);
         }
 
         private void btnYen1_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.yen1;
+            CreateMoney(MoneyType.yen1);
         }
 
         private void btnDoller100_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.doller100;
+            CreateMoney(MoneyType.doller100);
         }
 
         private void btnCent1_Click(object sender, RoutedEventArgs e) {
-            _insertMoneyType = MoneyType.cent1;
+            CreateMoney(MoneyType.cent1);
         }
 
 
+        /// <summary>
+        /// お金クラスをインスタンス化して、手に持たせる。
+        /// </summary>
+        /// <param name="moneyType"></param>
+        private void CreateMoney(MoneyType moneyType) {
+            MoneyManager manager = MoneyManager.GetInstance();
+            _moneyInHand = manager.CreateMoney(moneyType);
 
+            this.moneyInHandDisplay.Text = "手に" + moneyType.ToString() + "を持っています。";
+        }
     }
 }

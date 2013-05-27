@@ -39,6 +39,18 @@ namespace VendingMachine.Model {
         }
 
         /// <summary>
+        /// お金を作ります。
+        /// 最終的には、ここだけでお金を作るようにします。
+        /// </summary>
+        /// <param name="moneyType"></param>
+        /// <returns></returns>
+        public MoneyBase CreateMoney(MoneyType moneyType) {
+            MoneyFactory factory = MoneyFactory.GetInstance();
+            MoneyBase money = factory.CreateMoney(moneyType);
+            return money;
+        }
+
+        /// <summary>
         /// Moneyを追加しますよ。
         /// </summary>
         /// <param name="money">お金</param>
@@ -71,12 +83,21 @@ namespace VendingMachine.Model {
         }
 
         /// <summary>
+        /// 投入したお金が幾らか計算する
+        /// </summary>
+        /// <returns></returns>
+        public string CountMoney() {
+            return "Mada Not Implement.";
+        } 
+
+
+        /// <summary>
         /// とりあえずStringでお金の総数を返すよ。
         /// 
         /// 投入金も、払い戻ししたので0円にする。
         /// </summary>
         /// <returns></returns>
-        public string OutputMoney() { 
+        public string ReturnMoney() { 
             string output = "";
 
             foreach (IList<MoneyBase> list in _allMoneyList.Values) {

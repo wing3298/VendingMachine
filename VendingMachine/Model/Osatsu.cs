@@ -11,7 +11,8 @@ namespace VendingMachine.Model {
     /// </summary>
     public class Osatsu : MoneyBase {
 
-        public Osatsu(MoneyType type): base(type) { 
+        public Osatsu(MoneyType type): base(type) {
+            //todo Reflectionを使って、MoneyFactory以外から呼び出されたときは、Exceptionにしようかな。
         }
 
     }
