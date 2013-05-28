@@ -12,7 +12,7 @@ namespace VendingMachine.Model {
     /// </summary>
     public class MoneyFactory {
 
-        protected static MoneyFactory _instance;
+        protected static MoneyFactory _instance = null;
 
         /// <summary>
         /// singleton
